@@ -42,19 +42,7 @@ body {
 }
 
 
-
-
-.timer-hours:before {
-    content: "00";
-}
-.timer-minutes:before {
-    content: "00";
-}
-.timer-seconds:before {
-    content: "00";
-}
-
-.timer-wrapper{
+.timer-wrapper {
     font-family: "Montserrat", "sans-serif";
     margin: 30px;
     background-color: #080808;
@@ -68,11 +56,11 @@ body {
     transition: all 1s ease-in-out;
 }
 
-.timer-wrapper.open{
+.timer-wrapper.open {
     transform: translateX(0);
 }
 
-.timer-button{
+.timer-button {
     font-family: "Montserrat", "sans-serif";
     color: #fff;
     margin: 30px 30px 0 30px;
@@ -85,13 +73,14 @@ body {
     font-size: 1rem;
 }
 
-.timer-button:active{
+.timer-button:active {
     box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.15);
 }
 
 .timer-container {
     display: flex;
 }
+
 .timer-col {
     text-align: center;
     margin-right: 40px;
@@ -99,6 +88,7 @@ body {
     min-width: 90px;
     position: relative;
 }
+
 .timer-col:not(:last-child):before, .timer-col:not(:last-child):after {
     content: "";
     background-color: rgba(255, 255, 255, 0.3);
@@ -109,20 +99,50 @@ body {
     position: absolute;
     right: -42px;
 }
+
 .timer-col:not(:last-child):before {
     top: 35%;
 }
+
 .timer-col:not(:last-child):after {
     top: 50%;
 }
+
 .timer-timer:before {
     color: #fff;
     font-size: 4.2rem;
     text-transform: uppercase;
 }
+
+.timer-timer {
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background: inherit;
+    width: 60px;
+}
+
+
+
 .timer-label {
     color: rgba(255, 255, 255, 0.35);
     text-transform: uppercase;
     font-size: 0.7rem;
     margin-top: 10px;
+}
+
+/*Чтобы убрать стрелки у инпута*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
 }
