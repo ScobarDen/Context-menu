@@ -4,16 +4,13 @@ import { CANVAS_HEIGHT, CANVAS_WIDTH, COLORS } from "../common/constants.js";
 export default class Canvas {
   #canvas;
   #context;
-  #mouseX;
-  #mouseY;
+  #isCLickOnCanvas;
   constructor(parentNode) {
     this.#canvas = this.#createCanvas(parentNode, CANVAS_WIDTH, CANVAS_HEIGHT);
     this.#context = this.#canvas.getContext("2d");
     this.#context.fillStyle = "rgb(255,255,255)";
     this.#context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    this.isCLickOnCanvas = false;
-    this.#mouseX = 0;
-    this.#mouseY = 0;
+    this.#isCLickOnCanvas = false;
   }
 
   #createCanvas = (parentNode, width, height) => {
@@ -30,7 +27,7 @@ export default class Canvas {
     this.#context.lineCap = "round";
 
     this.#canvas.onmousemove = (evt) => {
-      if (evt.buttons === 1 && this.isCLickOnCanvas) {
+      if (evt.buttons === 1 && this.#isCLickOnCanvas) {
         this.#context.lineTo(evt.offsetX, evt.offsetY);
         this.#context.stroke();
       }
@@ -39,27 +36,28 @@ export default class Canvas {
     this.#canvas.onmouseup = (evt) => {
       if (evt.buttons === 1) {
         this.#context.closePath();
-        this.isCLickOnCanvas = false;
+        this.#isCLickOnCanvas = false;
       }
     };
 
     this.#canvas.onmousedown = (evt) => {
       if (evt.buttons === 1) {
         this.#context.beginPath();
-        this.isCLickOnCanvas = true;
+        this.#isCLickOnCanvas = true;
       }
     };
 
     this.#canvas.onmouseleave = (evt) => {
       if (evt.buttons === 1) {
         this.#context.closePath();
-        this.isCLickOnCanvas = false;
+        this.#isCLickOnCanvas = false;
       }
     };
   };
 
   clearCanvas = () => {
     this.#context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    this.#context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   };
 
   saveImage = () => {
@@ -68,7 +66,7 @@ export default class Canvas {
     image.src = imageData;
     const link = document.createElement("a");
     link.setAttribute("href", image.src);
-    link.setAttribute("download", "canvasImage");
+    link.setAttribute("download", "image");
     link.click();
   };
 }

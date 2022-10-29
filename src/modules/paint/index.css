@@ -119,10 +119,10 @@ body{
 .modal-content {
     position: relative;
     background-color: #cccccc;
-    margin: 15% auto;
+    margin: 10% auto 0;
     padding: 40px;
     border: 1px solid #888;
-    width: 80%;
+    width: 1000px;
     z-index: 2;
     border-radius: 20px;
 }
