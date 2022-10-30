@@ -9,7 +9,7 @@ body{
     padding: 10px;
 }
 
-.canvas {
+.temp-canvas {
     display: block;
     margin: 0 auto;
     background-color: #ffffff;
@@ -33,14 +33,14 @@ body{
     align-items: center;
     margin-right: 10px;
 }
-.tool-panel {
+.width-panel {
     display: flex;
     width: 150px;
     height: 100%;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.tool-title {
+.width-title {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -59,7 +59,16 @@ body{
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.buttons {
     justify-content: space-evenly;
+}
+
+.tools-buttons {
+    padding: 10px 100px;
+    display: flex;
+    gap: 10px;
 }
 
 .color-button,
@@ -69,14 +78,18 @@ body{
 }
 
 .clear-button,
-.save-button {
+.save-button,
+.line-button,
+.rect-button {
     padding: 10px;
 }
 
 .color-button,
 .current-color__color,
 .clear-button,
-.save-button {
+.save-button,
+.line-button,
+.rect-button {
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 3px -1px rgb(0 0 0 / 30%);
@@ -88,7 +101,9 @@ body{
 
 .color-button:hover,
 .clear-button:hover,
-.save-button:hover {
+.save-button:hover,
+.line-button:hover,
+.rect-button:hover {
     box-shadow: 1px 2px 3px 1px rgba(0,0,0,.3);
     transition: all .3s;
     transform: translateY(0px);
@@ -96,7 +111,11 @@ body{
 
 .color-button:active,
 .clear-button:active,
-.save-button:active {
+.save-button:active,
+.line-button:active,
+.rect-button:active,
+.line-button.active,
+.rect-button.active {
     box-shadow: 1px 2px 3px 1px rgba(0,0,0,.3);
     background-color: #eee;
     transform: translateY(2px);

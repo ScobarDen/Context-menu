@@ -7,6 +7,7 @@ import {
   INITIAL_BRUSH_WIDTH,
   INITIAL_INDEX_COLOR,
 } from "../common/constants.js";
+import Tools from "./Tools";
 
 export default class App {
   #canvas;
@@ -15,6 +16,8 @@ export default class App {
   #controlPanel;
   #modal;
   #modalContent;
+  #tool;
+  #tools;
 
   constructor() {
     this.#modal = document.querySelector(".modal");
@@ -29,22 +32,41 @@ export default class App {
       this.#clearCanvas,
       this.#saveImageCanvas
     );
+    this.#tools = new Tools(this.#modalContent, this.#changeTool);
     this.#canvas = new Canvas(this.#modalContent);
-    this.#drawLine();
+    this.#tool = "brush";
+    this.#draw();
   }
 
   #changeColor = (index) => {
     this.#colorIndex = index;
-    this.#drawLine();
+    this.#draw();
   };
 
   #changeBrushWidth = (size) => {
     this.#brushSize = size;
-    this.#drawLine();
+    this.#draw();
   };
 
   #drawLine = () => {
     this.#canvas.drawLine(this.#colorIndex, this.#brushSize);
+  };
+
+  #drawRect = () => {
+    this.#canvas.drawRect(this.#colorIndex, this.#brushSize);
+  };
+
+  #draw = () => {
+    if (this.#tool === "brush") {
+      this.#drawLine();
+    } else if (this.#tool === "rect") {
+      this.#drawRect();
+    }
+  };
+
+  #changeTool = (toolName) => {
+    this.#tool = toolName;
+    this.#draw();
   };
 
   #clearCanvas = () => {
