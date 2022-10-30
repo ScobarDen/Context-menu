@@ -8,6 +8,7 @@ import { ChooseFigure } from "./modules/randomFigure/chooseepicture";
 import { DeleteRandomFigure } from "./modules/randomFigure/deleterandomfigure.js";
 import {SoundModule} from "@/modules/sound.module";
 import {TimerModule} from "@/modules/timer.module";
+import { MessegeModule } from "./modules/messege";
 
 const contextMenu = new ContextMenu();
 const background = new BackgroundModule();
@@ -18,6 +19,7 @@ const paintFigure = new RandomFigure();
 const choosenPicture = new ChooseFigure();
 const DeleteRandomFigureButton = new DeleteRandomFigure();
 const timer = new TimerModule();
+const messege = new MessegeModule();
 contextMenu.add(paintFigure);
 contextMenu.add(choosenPicture);
 contextMenu.add(DeleteRandomFigureButton);
@@ -26,4 +28,5 @@ contextMenu.add(clicks);
 contextMenu.add(sounds);
 contextMenu.add(paint);
 contextMenu.add(timer);
+contextMenu.add(messege);
 
