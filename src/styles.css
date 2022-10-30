@@ -1,53 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
-    background-image: url("./assets/background.png");
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  background-image: url("./assets/background.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .menu {
-    position: fixed;
-    z-index: 1000;
-    width: 150px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
-    list-style: none;
+  position: fixed;
+  z-index: 1000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
 }
 
 .menu.open {
-    display: block;
+  display: block;
 }
 
 .menu .menu-item {
-    padding: 8px 10px;
-    font-size: 1rem;
-    color: #eee;
-    cursor: pointer;
-    transition: background-color .2s ease-in;
-    border-radius: inherit;
+  padding: 8px 10px;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  border-radius: inherit;
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+  background: #343434;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
+}
+.img {
+  width: 300px;
+  height: 300px;
+}
+
+.modalFigure {
+  margin: 0;
+  padding: 20px;
+  display: block;
+  position: fixed;
+  top: 50px;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 750px;
+  z-index: 200;
+  padding: 1.5rem;
+  border-radius: 10px;
+  height: 500px;
+  background: url(./assets/bestfone.jpg) no-repeat;
+  background-size: 750px 500px;
+}
+
+.modalFigure h1 {
+  text-align: center;
+  color: rgb(11, 11, 14);
+  background: rgb(255, 255, 255, 0);
+}
+
+.modalButton {
+  border: 0px;
+  margin: auto;
+  width: 200px;
+  height: 40px;
+  background: rgb(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+.modalButton:hover {
+  background: rgb(46, 2, 54);
+  color: red;
+  transition: 1s;
 }
 
 .timer-wrapper {
