@@ -40,6 +40,18 @@ export default class Canvas {
     return canvas;
   };
 
+  #startDraw = () => {
+    this.#tempContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    this.#tempContext.moveTo(this.#mouseX, this.#mouseY);
+    this.#tempContext.drawImage(
+      this.#canvas,
+      0,
+      0,
+      CANVAS_WIDTH,
+      CANVAS_HEIGHT
+    );
+  };
+
   drawLine = (colorIndex, brushWidth) => {
     this.#tempContext.strokeStyle = COLORS[colorIndex];
     this.#tempContext.lineWidth = brushWidth;
@@ -98,20 +110,40 @@ export default class Canvas {
 
     this.#tempCanvas.onmousemove = (evt) => {
       if (evt.buttons === 1 && this.isCLickOnCanvas) {
-        this.#tempContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        this.#tempContext.moveTo(this.#mouseX, this.#mouseY);
-        this.#tempContext.drawImage(
-          this.#canvas,
-          0,
-          0,
-          CANVAS_WIDTH,
-          CANVAS_HEIGHT
-        );
+        this.#startDraw();
         const x = Math.min(evt.offsetX, this.#mouseX);
         const y = Math.min(evt.offsetY, this.#mouseY);
         const width = Math.abs(evt.offsetX - this.#mouseX);
         const height = Math.abs(evt.offsetY - this.#mouseY);
         this.#tempContext.strokeRect(x, y, width, height);
+      }
+    };
+  };
+
+  drawEllipse = (colorIndex, brushWidth) => {
+    this.#tempContext.strokeStyle = COLORS[colorIndex];
+    this.#tempContext.lineWidth = brushWidth;
+
+    this.#tempCanvas.onmousemove = (evt) => {
+      if (evt.buttons === 1 && this.isCLickOnCanvas) {
+        this.#startDraw();
+        const x = Math.min(evt.offsetX, this.#mouseX);
+        const y = Math.min(evt.offsetY, this.#mouseY);
+        const radiusX = Math.abs(evt.offsetX - this.#mouseX) / 2;
+        const radiusY = Math.abs(evt.offsetY - this.#mouseY) / 2;
+        this.#tempContext.beginPath();
+        this.#tempContext.ellipse(
+          x + radiusX,
+          y + radiusY,
+          radiusX,
+          radiusY,
+          Math.PI,
+          0,
+          2 * Math.PI,
+          false
+        );
+        this.#tempContext.stroke();
+        this.#tempContext.closePath();
       }
     };
   };
