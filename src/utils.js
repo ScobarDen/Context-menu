@@ -146,12 +146,12 @@ export function getFigure(lincToPicture) {
   figure.style.width = `${sizeX}px`;
   figure.style.height = `${sizeX}px`;
 
-  const imgines = document.createElement("img");
-  imgines.style.width = `${sizeX}px`;
-  imgines.style.height = `${sizeX}px`;
-  imgines.style.borderRadius = "15px";
-  imgines.src = lincToPicture;
-  figure.append(imgines);
+  const images = document.createElement("img");
+  images.style.width = `${sizeX}px`;
+  images.style.height = `${sizeX}px`;
+  images.style.borderRadius = "15px";
+  images.src = lincToPicture;
+  figure.append(images);
 
   return figure;
 }
