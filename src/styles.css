@@ -12,6 +12,10 @@ body {
     height: 100vh;
     width: 100%;
     padding: 2rem;
+    background-image: url("./assets/background.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .menu {
@@ -41,6 +45,9 @@ body {
     background: #343434;
 }
 
+.title {
+    text-align: center;
+}
 
 .timer-wrapper {
     font-family: "Montserrat", "sans-serif";
@@ -166,3 +173,4 @@ input[type="number"]:hover,
 input[type="number"]:focus {
     -moz-appearance: number-input;
 }
+
