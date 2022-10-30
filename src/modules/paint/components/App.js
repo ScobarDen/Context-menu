@@ -57,7 +57,6 @@ export default class App {
   };
 
   #drawEllipse = () => {
-    console.log("ellipse");
     this.#canvas.drawEllipse(this.#colorIndex, this.#brushSize);
   };
 
