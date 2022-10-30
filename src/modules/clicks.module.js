@@ -20,6 +20,7 @@ export class ClicksModule extends Module {
     removeListener = () => {
         this.updateTitle(`Ты кликнул мышкой ${this.clicks} раз(а)!`);
         document.body.removeEventListener("click", this.clickHandler);
+        setTimeout(() => this.title.style.display = 'none', 2000);
     };
 
     updateTitle = (text) => {
@@ -27,8 +28,8 @@ export class ClicksModule extends Module {
     }
 
     reset = () => {
-        clearInterval(this.interval)
-        clearTimeout(this.timeout)
+        clearInterval(this.interval);
+        clearTimeout(this.timeout);
         this.clicks = -1;
         this.time = this.initialTime;
     }
@@ -38,22 +39,23 @@ export class ClicksModule extends Module {
         return title;
     }
     showClicks = () => {
-        this.updateTitle(`Кликай быстрее осталось ${this.time} секунд(а)!`)
+        this.updateTitle(`Кликай быстрее осталось ${this.time} секунд(а)!`);
     }
 
     updateClicks = () => {
         this.time--;
         if (this.time > 0) {
-            this.showClicks()
+            this.showClicks();
         }
     }
 
     trigger = () => {
-        this.reset()
-        this.showClicks()
+        this.title.style.display = 'block'
+        this.reset();
+        this.showClicks();
         document.body.append(this.title);
         document.body.addEventListener("click", this.clickHandler);
-        this.interval = setInterval(this.updateClicks, 1000)
+        this.interval = setInterval(this.updateClicks, 1000);
         this.timeout = setTimeout(() => this.removeListener(), 5000);
     };
 }
