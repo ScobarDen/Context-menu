@@ -1,0 +1,17 @@
+.modal-wrap {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 25%;
+	height: 5%;
+	background: rgb(187, 143, 143);
+	border-radius: 15px;
+	border: 2px solid rgb(141, 104, 104)
+}
+
+.text {
+	text-align: center;
+	color: rgb(71, 57, 57);
+	font-size: 30px;
+	padding: 7px 3px;
+}

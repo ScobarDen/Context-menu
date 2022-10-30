@@ -1,2 +1,31 @@
-import './styles.css'
+import "./styles.css";
+import { ContextMenu } from "@/menu";
+import { ClicksModule } from "@/modules/clicks.module";
+import { BackgroundModule } from "@/modules/background.module";
+import { Paint } from "@/modules/paint";
+import { RandomFigure } from "./modules/randomFigure/randomFigure.js";
+import { ChosenFigure } from "./modules/randomFigure/chosenPicture";
+import { DeleteRandomFigure } from "./modules/randomFigure/deleteRandomFigure.js";
+import { SoundModule } from "@/modules/sound.module";
+import { TimerModule } from "@/modules/timer.module";
+import { MessageModule } from "./modules/messege";
 
+const contextMenu = new ContextMenu();
+const background = new BackgroundModule();
+const clicks = new ClicksModule(5);
+const sounds = new SoundModule();
+const paint = new Paint();
+const paintFigure = new RandomFigure();
+const deleteRandomFigureButton = new DeleteRandomFigure();
+const chosenFigure = new ChosenFigure();
+const timer = new TimerModule();
+const message = new MessageModule();
+contextMenu.add(paintFigure);
+contextMenu.add(deleteRandomFigureButton);
+contextMenu.add(chosenFigure);
+contextMenu.add(background);
+contextMenu.add(clicks);
+contextMenu.add(sounds);
+contextMenu.add(paint);
+contextMenu.add(timer);
+contextMenu.add(message);
