@@ -7,7 +7,7 @@ export class ChooseFigure extends Module {
   }
 
   trigger() {
-    const checkModalInBody = document.querySelector(".modal");
+    const checkModalInBody = document.querySelector(".modalFigure");
     if (checkModalInBody) {
       checkModalInBody.remove();
     }
