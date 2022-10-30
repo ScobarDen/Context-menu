@@ -1,9 +1,11 @@
 import {Module} from '../core/module';
 
+
 const modulesFor = {
     timer: null,
     timerWrapper: null,
     button: null,
+    cross: null,
     time: {
         hours: '00',
         minutes: '00',
@@ -12,6 +14,7 @@ const modulesFor = {
     }
 }
 let timerId = null;
+let isPlay = false;
 
 
 const countdownTimer = () => {
@@ -26,16 +29,16 @@ const countdownTimer = () => {
         clearInterval(timerId);
         modulesFor.timer.forEach((element, index) => {
             element.removeAttribute('disabled');
-            modulesFor.timer[index].value = ''
+            modulesFor.timer[index].value = '';
         });
-        modulesFor.button.removeAttribute('disabled', '');
-        modulesFor.time.hours = '00'
-        modulesFor.time.minutes = '00'
-        modulesFor.time.seconds = '00'
-        modulesFor.time.allSeconds = 0
+        modulesFor.time.hours = '00';
+        modulesFor.time.minutes = '00';
+        modulesFor.time.seconds = '00';
+        modulesFor.time.allSeconds = 0;
         setTimeout(() => {
-            modulesFor.timerWrapper.classList.remove('open')
+            modulesFor.timerWrapper.classList.remove('open');
             modulesFor.message.classList.remove('open');
+            modulesFor.button.innerHTML = `<i class="fa-solid fa-play"></i>`
         }, 1500);
     }
     modulesFor.time.allSeconds--;
@@ -49,11 +52,6 @@ const startTimer = ({hours, minutes, seconds}) => {
     timerId = setInterval(countdownTimer, 1000);
 }
 
-document.addEventListener('click',e => {
-    if (!e.target.closest('.timer-wrapper')){
-        modulesFor.timerWrapper.classList.remove('open')
-    }
-})
 
 export class TimerModule extends Module {
     #container;
@@ -62,7 +60,10 @@ export class TimerModule extends Module {
     #timer = [];
     #label = [];
     #button;
+    #buttonReset;
     #message;
+    #cross;
+    #buttonContainer;
 
     constructor() {
         super("timer", "таймер");
@@ -87,20 +88,32 @@ export class TimerModule extends Module {
         }
         modulesFor.timer = this.#timer;
         modulesFor.timerWrapper = this.#wrapper;
+        this.#buttonContainer = document.createElement('div');
         this.#button = document.createElement('button');
         modulesFor.button = this.#button;
         this.#button.className = 'timer-button'
         this.#button.innerHTML = `<i class="fa-solid fa-play"></i>`
         this.#button.setAttribute('disabled', '');
+        this.#buttonReset = document.createElement('button');
+        modulesFor.buttonReset = this.#buttonReset;
+        this.#buttonReset.className = 'timer-button'
+        this.#buttonReset.innerHTML = `<i class="fa-solid fa-trash"></i>`
+        this.#buttonContainer.append(this.#button,this.#buttonReset)
         this.#message = document.createElement('div');
         this.#message.className = 'timer-message';
-        this.#message.textContent = 'Время вышло!!!';
+        this.#message.textContent = 'Время вышло!';
         modulesFor.message = this.#message;
+        this.#cross = document.createElement('button');
+        this.#cross.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+        this.#cross.className = 'timer-cross';
+        modulesFor.cross = this.#cross;
         this.#container.append(...this.#col);
-        this.#wrapper.append(this.#container, this.#button,this.#message);
+        this.#wrapper.append(this.#container, this.#buttonContainer,this.#message, this.#cross);
 
         this.#button.addEventListener('click', this.#buttonHandler);
-        this.#timer.forEach(timer => timer.addEventListener('input', this.#inputHandler))
+        this.#buttonReset.addEventListener('click', this.#buttonResetHandler);
+        this.#timer.forEach(timer => timer.addEventListener('input', this.#inputHandler));
+        this.#cross.addEventListener('click', this.#crossHandler);
     }
 
     get timer() {
@@ -110,14 +123,23 @@ export class TimerModule extends Module {
     trigger() {
         document.body.append(this.timer);
         setTimeout(() => this.#wrapper.classList.add('open'), 0);
-        modulesFor.button.setAttribute('disabled', '');
     }
 
 
     #buttonHandler(e) {
-        modulesFor.timer.forEach(element => element.setAttribute('disabled', ''));
-        modulesFor.button.setAttribute('disabled', '');
-        startTimer(modulesFor.time)
+        if (isPlay) {
+            clearInterval(timerId);
+            isPlay = false;
+            modulesFor.button.innerHTML = `<i class="fa-solid fa-play"></i>`;
+            modulesFor.time.hours = modulesFor.timer[0].value;
+            modulesFor.time.minutes = modulesFor.timer[1].value;
+            modulesFor.time.seconds = modulesFor.timer[2].value;
+        } else{
+            modulesFor.button.innerHTML = `<i class="fa-solid fa-stop"></i>`;
+            modulesFor.timer.forEach(element => element.setAttribute('disabled', ''));
+            startTimer(modulesFor.time);
+            isPlay = true;
+        }
     }
 
     #inputHandler(e) {
@@ -128,8 +150,26 @@ export class TimerModule extends Module {
             modulesFor.time[`${type}`] = num;
         } else {
             const index = modulesFor.timer.findIndex(elem => elem.dataset.type === type);
-            modulesFor.timer[index].value = ''
+            modulesFor.timer[index].value = '';
         }
     }
 
+    #crossHandler() {
+        modulesFor.timerWrapper.classList.remove('open');
+    }
+
+    #buttonResetHandler() {
+        modulesFor.button.innerHTML = `<i class="fa-solid fa-play"></i>`;
+        isPlay = false;
+        clearInterval(timerId);
+        modulesFor.timer[0].value = '';
+        modulesFor.timer[1].value = '';
+        modulesFor.timer[2].value = '';
+        modulesFor.time.hours = '';
+        modulesFor.time.minutes = '';
+        modulesFor.time.seconds = '';
+        modulesFor.time.allSeconds = 0;
+        modulesFor.timer.forEach(element => element.removeAttribute('disabled'));
+        modulesFor.button.setAttribute('disabled','');
+    }
 }
