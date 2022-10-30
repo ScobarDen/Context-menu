@@ -48,3 +48,129 @@ body {
 .title {
     text-align: center;
 }
+
+.timer-wrapper {
+    font-family: "Montserrat", "sans-serif";
+    margin: 30px;
+    background-color: #080808;
+    border-radius: 5px;
+    padding: 60px 20px;
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 90px 30px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(200%);
+    transition: all 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer-wrapper.open {
+    transform: translateX(0);
+}
+
+.timer-button {
+    font-family: "Montserrat", "sans-serif";
+    color: #080808;
+    margin: 30px 30px 0 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.15);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.timer-button:active {
+    box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.15);
+}
+
+.timer-container {
+    display: flex;
+}
+
+.timer-col {
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 40px;
+    min-width: 90px;
+    position: relative;
+}
+
+.timer-col:not(:last-child):before, .timer-col:not(:last-child):after {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    right: -42px;
+}
+
+.timer-col:not(:last-child):before {
+    top: 35%;
+}
+
+.timer-col:not(:last-child):after {
+    top: 50%;
+}
+
+.timer-timer:before {
+    color: #fff;
+    font-size: 4.2rem;
+    text-transform: uppercase;
+}
+
+.timer-timer {
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background: inherit;
+    width: 60px;
+}
+
+.timer-message{
+    font-family: "Montserrat", "sans-serif";
+    /*margin: 30px 30px 0 30px;*/
+    padding-top: 20px;
+    color: #fff;
+    font-size: 3rem;
+    display: none;
+}
+
+.timer-message.open{
+    font-family: "Montserrat", "sans-serif";
+    /*margin: 30px 30px 0 30px;*/
+    padding-top: 20px;
+    color: #fff;
+    font-size: 3rem;
+    display: block;
+}
+
+.timer-label {
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 10px;
+}
+
+/*Чтобы убрать стрелки у инпута*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+
