@@ -141,7 +141,7 @@ export function createModal() {
 
 export function getFigure(lincToPicture) {
   const { sizeX, figure } = renderFigure(100, 150);
-  figure.classList.add("addedElements");
+  figure.className = "addedElements";
   figure.style.borderRadius = "15px";
   figure.style.width = `${sizeX}px`;
   figure.style.height = `${sizeX}px`;

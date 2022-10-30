@@ -1,4 +1,4 @@
-import { Module } from "../core/module";
+import { Module } from "../.././core/module";
 import { createModal } from "@/utils";
 
 export class ChooseFigure extends Module {

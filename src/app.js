@@ -3,9 +3,9 @@ import { ContextMenu } from "@/menu";
 import { ClicksModule } from "@/modules/clicks.module";
 import { BackgroundModule } from "@/modules/background.module";
 import { Paint } from "@/modules/paint";
-import { RandomFigure } from "./modules/randomfigure.js";
-import { ChooseFigure } from "./modules/chooseepicture";
-import { DeleteRandomFigure } from "./modules/deleterandomfigure.js";
+import { RandomFigure } from "./modules/randomFigure/randomfigure.js";
+import { ChooseFigure } from "./modules/randomFigure/chooseepicture";
+import { DeleteRandomFigure } from "./modules/randomFigure/deleterandomfigure.js";
 
 const contextMenu = new ContextMenu();
 const background = new BackgroundModule();
