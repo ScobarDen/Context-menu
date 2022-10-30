@@ -6,6 +6,7 @@ import {SoundModule} from "@/modules/sound.module";
 import { Paint } from "@/modules/paint";
 
 
+
 const contextMenu = new ContextMenu();
 const background = new BackgroundModule();
 const clicks = new ClicksModule(5);
