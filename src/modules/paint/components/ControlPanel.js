@@ -1,5 +1,5 @@
 import Colors from "./Colors.js";
-import Tools from "./Tools.js";
+import WidthControl from "./WidthControl.js";
 import ClearButton from "./ClearButton";
 import CurrentColor from "./CurrentColor";
 import SaveButton from "./SaveButton";
@@ -26,7 +26,7 @@ export default class ControlPanel {
     this.#panel = createElement("div", "control-panel");
     this.#currentColor = new CurrentColor(this.#panel);
     this.#colors = new Colors(this.#panel, this.#changeCurrentColor);
-    this.#range = new Tools(this.#panel, changeBrushWidth);
+    this.#range = new WidthControl(this.#panel, changeBrushWidth);
     this.#buttons = createElement("div", "buttons");
     this.#clearButton = new ClearButton(this.#buttons, clearCanvas);
     this.#saveButton = new SaveButton(this.#buttons, saveImageCanvas);
