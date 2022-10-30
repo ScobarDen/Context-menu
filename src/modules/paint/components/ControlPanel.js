@@ -1,9 +1,10 @@
 import Colors from "./Colors.js";
 import Tools from "./Tools.js";
-import { createElement } from "../common/utils.js";
 import ClearButton from "./ClearButton";
 import CurrentColor from "./CurrentColor";
 import SaveButton from "./SaveButton";
+
+import { createElement } from "../common/utils.js";
 
 export default class ControlPanel {
   #panel;
