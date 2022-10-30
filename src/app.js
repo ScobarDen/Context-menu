@@ -1,13 +1,22 @@
-import './styles.css'
-import {ContextMenu} from "@/menu";
-import {ClicksModule} from "@/modules/clicks.module";
-import {BackgroundModule} from "@/modules/background.module";
+import "./styles.css";
+import { ContextMenu } from "@/menu";
+import { ClicksModule } from "@/modules/clicks.module";
+import { BackgroundModule } from "@/modules/background.module";
 import { Paint } from "@/modules/paint";
+import { RandomFigure } from "./modules/randomfigure.js";
+import { ChooseFigure } from "./modules/chooseepicture";
+import { DeleteRandomFigure } from "./modules/deleterandomfigure.js";
 
 const contextMenu = new ContextMenu();
 const background = new BackgroundModule();
 const clicks = new ClicksModule(5);
 const paint = new Paint();
-contextMenu.add(background)
+const paintFigure = new RandomFigure();
+const choosenPicture = new ChooseFigure();
+const DeleteRandomFigureButton = new DeleteRandomFigure();
+contextMenu.add(paintFigure);
+contextMenu.add(choosenPicture);
+contextMenu.add(DeleteRandomFigureButton);
+contextMenu.add(background);
 contextMenu.add(clicks);
 contextMenu.add(paint);
