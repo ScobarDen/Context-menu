@@ -56,11 +56,17 @@ export default class App {
     this.#canvas.drawRect(this.#colorIndex, this.#brushSize);
   };
 
+  #drawEllipse = () => {
+    this.#canvas.drawEllipse(this.#colorIndex, this.#brushSize);
+  };
+
   #draw = () => {
     if (this.#tool === "brush") {
       this.#drawLine();
     } else if (this.#tool === "rect") {
       this.#drawRect();
+    } else if (this.#tool === "ellipse") {
+      this.#drawEllipse();
     }
   };
 

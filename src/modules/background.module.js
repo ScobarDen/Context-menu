@@ -1,12 +1,12 @@
 import { Module } from "@/core/module";
-import {getRandomColor} from "@/utils";
+import { getRandomColor } from "@/utils";
 
 export class BackgroundModule extends Module {
-    constructor() {
-        super("background", "сменить цвет");
-    }
+  constructor() {
+    super("background", "Сменить цвет");
+  }
 
-    trigger() {
-        document.body.style.backgroundColor = getRandomColor();
-    }
+  trigger() {
+    document.body.style.backgroundColor = getRandomColor();
+  }
 }

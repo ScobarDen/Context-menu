@@ -4,7 +4,7 @@ import "./index.css";
 
 export class Paint extends Module {
   constructor() {
-    super("paint", "рисовать");
+    super("paint", "Рисовать");
   }
 
   trigger() {
