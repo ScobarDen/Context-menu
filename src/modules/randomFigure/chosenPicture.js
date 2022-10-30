@@ -3,7 +3,7 @@ import { createModal } from "@/utils";
 
 export class ChosenFigure extends Module {
   constructor() {
-    super("chooseFigure", "Нарисовать  фигуру");
+    super("chooseFigure", "Нарисовать  картинку");
   }
 
   trigger() {
